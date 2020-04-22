@@ -1,0 +1,40 @@
+{% extends 'web/base.html'%}
+{% block title %}Recommendations{% endblock %}
+{% block body %}
+
+
+
+
+	<div class="container-fluid" style="background-color: #313030;margin-top: -20px;">
+        <div class="row">
+            <div class="col-xs-offset-4">
+                <h1 style="color: #f8ec42;font-style: normal;">Movies Recommended to you</h1>
+            </div>
+        </div>
+    <!-- Movie list -->
+    <div class="row">
+            {% if movie_list %}
+            {% for movie in movie_list %}
+                <div class="col-sm-2 col-md-2 ">
+                    <div class="thumbnail">
+                        <h4>{{movie.title}}</h4>
+                        <!-- <a href="{% url 'detail' movie.id %}">
+                            <img src="{{ movie.movie_logo.url}}" class="img-responsive">
+                        </a> -->
+                        <h5>{{movie.genre}}</h5>
+                        <div class="caption">
+
+                            <!-- View Details -->
+                            <a style="text-decoration: none;color: white;background-color: #d6c914;border-color: #f8ec42;" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='white'" href="{% url 'detail' movie.id %}" class="btn btn-sm" role="button">Give Rating</a>
+
+                                        
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+        </div>
+    
+</div>
+
+{% endblock %}
